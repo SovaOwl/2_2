@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -8,14 +8,19 @@ struct account
 	int account_number = -999;
 	string account_holder_name;
 	int balance = -999;
-	int new_balance = -999;
 };
+
+void new_balance(account& p, int new_bal)
+{
+	p.balance = new_bal;
+}
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
 
 	account ac;
+	int new_bal;
 
 	cout << "Введите номер счёта: ";
 	cin >> ac.account_number;
@@ -27,7 +32,9 @@ int main()
 	cin >> ac.balance;
 
 	cout << "Введите новый баланс: ";
-	cin >> ac.new_balance;
+	cin >> new_bal;
 
-	cout << "Ваш счёт: " << ac.account_number << ", " << ac.account_holder_name << ", " << ac.new_balance;
+	new_balance(ac, new_bal);
+
+	cout << "Ваш счёт: " << ac.account_number << ", " << ac.account_holder_name << ", " << ac.balance;
 }
